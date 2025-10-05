@@ -1,68 +1,106 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
+@layer base {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    /* Cosmic Space Theme - Deep Space Blues */
+    --background: 225 40% 6%;
+    --foreground: 200 100% 95%;
+
+    --card: 225 35% 10%;
+    --card-foreground: 200 100% 95%;
+
+    --popover: 225 40% 8%;
+    --popover-foreground: 200 100% 95%;
+
+    /* Glowing Cyan Primary */
+    --primary: 190 100% 50%;
+    --primary-foreground: 225 40% 6%;
+
+    /* Deep Blue Secondary */
+    --secondary: 225 35% 15%;
+    --secondary-foreground: 200 100% 95%;
+
+    /* Muted Space Gray */
+    --muted: 225 20% 20%;
+    --muted-foreground: 200 20% 70%;
+
+    /* Purple Accent */
+    --accent: 270 60% 50%;
+    --accent-foreground: 200 100% 95%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 200 100% 95%;
+
+    --border: 225 30% 20%;
+    --input: 225 30% 15%;
+    --ring: 190 100% 50%;
+
+    --radius: 0.75rem;
+
+    /* Glow Effects */
+    --glow-primary: 190 100% 50%;
+    --glow-accent: 270 60% 50%;
+    
+    /* Gradients */
+    --gradient-cosmic: linear-gradient(135deg, hsl(225 40% 6%) 0%, hsl(240 50% 10%) 50%, hsl(270 40% 12%) 100%);
+    --gradient-hero: linear-gradient(to bottom, hsl(225 40% 8% / 0.8), hsl(225 40% 6%));
   }
-  a:hover {
-    color: #747bff;
+}
+
+@layer base {
+  * {
+    @apply border-border;
   }
-  button {
-    background-color: #f9f9f9;
+
+  body {
+    @apply bg-background text-foreground;
+    background: linear-gradient(135deg, hsl(225 40% 6%) 0%, hsl(240 50% 10%) 50%, hsl(270 40% 12%) 100%);
+    background-attachment: fixed;
+  }
+}
+
+@layer utilities {
+  .glow-text {
+    text-shadow: 0 0 20px hsl(var(--glow-primary) / 0.5), 0 0 40px hsl(var(--glow-primary) / 0.3);
+  }
+  
+  .glow-border {
+    box-shadow: 0 0 20px hsl(var(--glow-primary) / 0.3), inset 0 0 20px hsl(var(--glow-primary) / 0.1);
+  }
+  
+  .card-glow {
+    box-shadow: 0 4px 20px hsl(var(--glow-primary) / 0.15), 0 0 40px hsl(var(--glow-primary) / 0.1);
+  }
+  
+  .cosmic-shimmer {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      hsl(var(--glow-primary) / 0.1) 50%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 3s infinite;
+  }
+  
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
   }
 }
