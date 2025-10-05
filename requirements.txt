@@ -1,0 +1,20 @@
+pandas
+numpy
+matplotlib
+seaborn
+scikit-learn
+xgboost
+lightgbm
+tensorflow>=2.10
+torch  # optional if you prefer PyTorch
+astroquery
+astropy
+requests
+fastapi
+uvicorn[standard]
+psycopg2-binary
+boto3
+minio
+shap
+optuna  # optional tuning
+plotly
